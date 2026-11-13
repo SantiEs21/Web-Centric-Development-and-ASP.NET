@@ -1,42 +1,44 @@
 # Web-Centric-Development-and-ASP.NET
 
-API REST de tareas (Todo) hecha con C# y ASP.NET Core (`TodoApi`). Usa una base de datos en memoria, así que **no necesitas instalar ninguna base de datos**.
+A Todo REST API built with C# and ASP.NET Core (`TodoApi`). It uses an in-memory database, so **you don't need to install any database**.
 
-## Requisitos
+## Requirements
 
-- [.NET SDK 10.0](https://dotnet.microsoft.com/download/dotnet/10.0) (el proyecto usa `net10.0`)
+- [.NET SDK 10.0](https://dotnet.microsoft.com/download/dotnet/10.0) (the project targets `net10.0`)
 - Git
-- Un editor (opcional): VS Code con la extensión C# Dev Kit, o Visual Studio 2022+
+- An editor (optional): VS Code with the C# Dev Kit extension, or Visual Studio 2022+
 
-Verifica la instalación:
+Check your installation:
 
 ```bash
-dotnet --version   # debe mostrar 10.x
+dotnet --version   # should show 10.x
 git --version
 ```
 
-## Instalación
+## Installation
 
 ```bash
-# 1. Clonar el repositorio
-git clone <URL-DEL-REPOSITORIO>
+# 1. Clone the repository
+git clone <REPOSITORY-URL>
 cd Web-Centric-Development-and-ASP.NET
 
-# 2. Restaurar herramientas locales (CSharpier, opcional) y paquetes NuGet
+# 2. Restore local tools (CSharpier, optional) and NuGet packages
 dotnet tool restore
 dotnet restore
 
-# 3. (Opcional) Confiar en el certificado HTTPS de desarrollo
+# 3. (Optional) Trust the HTTPS development certificate
 dotnet dev-certs https --trust
 ```
 
-## Ejecutar el proyecto
+> On Linux, `dotnet dev-certs https --trust` does not trust the certificate automatically. Use the `http` profile instead.
+
+## Run the project
 
 ```bash
 dotnet run --launch-profile https
 ```
 
-O solo HTTP:
+Or HTTP only (same as plain `dotnet run`):
 
 ```bash
 dotnet run --launch-profile http
@@ -44,44 +46,44 @@ dotnet run --launch-profile http
 
 URLs:
 
-| Perfil | URL                    |
-| ------ | ---------------------- |
-| http   | http://localhost:5088  |
-| https  | https://localhost:7216 |
+| Profile | URL                    |
+| ------- | ---------------------- |
+| http    | http://localhost:5088  |
+| https   | https://localhost:7216 |
 
-Para detener la aplicación presiona `Ctrl + C`.
+Press `Ctrl + C` to stop the application.
 
-## Probar la API
+## Test the API
 
-- Swagger UI (solo en Development): http://localhost:5088/swagger
-- Documento OpenAPI: http://localhost:5088/openapi/v1.json
-- Archivo `TodoApi.http` para probar desde VS Code / Visual Studio.
+- Swagger UI (Development only): http://localhost:5088/swagger
+- OpenAPI document: http://localhost:5088/openapi/v1.json
+- The `TodoApi.http` file, to test from VS Code / Visual Studio.
 
-Endpoints principales:
+Main endpoints:
 
-| Método | Ruta                  | Descripción             |
-| ------ | --------------------- | ----------------------- |
-| GET    | `/api/TodoItems`      | Listar tareas           |
-| GET    | `/api/TodoItems/{id}` | Obtener una tarea       |
-| POST   | `/api/TodoItems`      | Crear una tarea         |
-| PUT    | `/api/TodoItems/{id}` | Actualizar una tarea    |
-| DELETE | `/api/TodoItems/{id}` | Eliminar una tarea      |
-| GET    | `/weatherforecast`    | Ejemplo de la plantilla |
+| Method | Route                 | Description            |
+| ------ | --------------------- | ---------------------- |
+| GET    | `/api/TodoItems`      | List todo items        |
+| GET    | `/api/TodoItems/{id}` | Get one todo item      |
+| POST   | `/api/TodoItems`      | Create a todo item     |
+| PUT    | `/api/TodoItems/{id}` | Update a todo item     |
+| DELETE | `/api/TodoItems/{id}` | Delete a todo item     |
+| GET    | `/weatherforecast`    | Template sample        |
 
-Ejemplo:
+Example:
 
 ```bash
 curl -X POST http://localhost:5088/api/TodoItems \
   -H "Content-Type: application/json" \
-  -d '{"name":"Mi primera tarea","isComplete":false}'
+  -d '{"name":"My first task","isComplete":false}'
 ```
 
-## Comandos útiles
+## Useful commands
 
 ```bash
-dotnet build           # compilar
-dotnet watch run       # ejecutar con recarga automática
-dotnet csharpier .     # formatear el código
+dotnet build           # build
+dotnet watch run       # run with hot reload
+dotnet csharpier .     # format the code
 ```
 
-> Nota: los datos viven en memoria; se pierden al detener la aplicación.
+> Note: data lives in memory and is lost when the application stops.
