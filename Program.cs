@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using Microsoft.EntityFrameworkCore;
 using TodoApi.Models;
 
@@ -7,7 +8,9 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
+
+builder.Services.ConfigureHttpJsonOptions(options =>
+    options.SerializerOptions.NumberHandling = JsonNumberHandling.Strict);
 builder.Services.AddOpenApi();
 builder.Services.AddDbContext<TodoContext>(opt =>
     opt.UseInMemoryDatabase("TodoList"));
