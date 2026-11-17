@@ -4,5 +4,6 @@ public class Book{
     public int author_id{get; set;}
     public string title{get; set;}="";
     public int publication_year{get; set;}
-    public Author Author { get; set; } = new Author();
+    public Author Author {get; set;} = new Author();
+    public List<Loan> Loans {get; set;} = new();
 }
