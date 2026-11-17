@@ -13,7 +13,7 @@ public class LibraryContext:DbContext{
     //create the relationship between Author and Book
     protected override void OnModelCreating(ModelBuilder modelBuilder){
         modelBuilder.Entity<LibraryUser>().ToTable("User");
-        modelBuilder.Entity<UserCard>().ToTable("User_Card");
+        modelBuilder.Entity<UserCard>().ToTable("Card");
         modelBuilder.Entity<Author>().ToTable("Author");
         modelBuilder.Entity<Book>().ToTable("Book");
         modelBuilder.Entity<Loan>().ToTable("Loan");

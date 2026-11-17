@@ -1,6 +1,8 @@
+using System.ComponentModel.DataAnnotations;
 namespace TodoApi.Models;
 
 public class Loan{
+    [Key]
     public int loan_id{get; set;}
     public int user_id{get; set;}
     public int book_id{get; set;}

@@ -1,5 +1,8 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace TodoApi.Models;
 public class Book{
+    [Key]
     public int book_id{get; set;}
     public int author_id{get; set;}
     public string title{get; set;}="";
