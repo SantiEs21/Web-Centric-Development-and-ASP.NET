@@ -18,6 +18,7 @@ using(var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<LibraryContext>();
     db.Database.EnsureCreated();
+    DBInitializer.Initialize(db);
 }
 
 app.UseHttpsRedirection();
